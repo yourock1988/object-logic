@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <li @click="car.price = 777">
+  <li @click="$emit('car-edit', Object.assign({}, car, { price: 777 }))">
     {{ car }}
   </li>
 </template>

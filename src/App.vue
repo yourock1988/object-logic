@@ -7,11 +7,13 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>Hello Vue</h1>
-  </div>
-  <div>
-    <WidgetCars />
+  <div class="wrap">
+    <div>
+      <h1>Hello Vue</h1>
+    </div>
+    <div>
+      <WidgetCars />
+    </div>
   </div>
 </template>
 

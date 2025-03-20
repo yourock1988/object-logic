@@ -15,16 +15,28 @@ export default {
       ],
     }
   },
+
+  methods: {
+    carsWithSwapped(newCar, oldCar) {
+      return this.cars.map(n => (n === oldCar ? newCar : n))
+    },
+  },
 }
 </script>
 
 <template>
-  {{ cars }}
-  <div>
+  <div class="wrap">
     <CarSubmitter @car-created="cars.push($event)" />
 
     <ul>
-      <CarEditor v-for="(car, idx) of cars" :key="idx" :car="car" />
+      <CarEditor
+        v-for="(car, idx) of cars"
+        :key="idx"
+        :car="car"
+        @car-edit="cars = carsWithSwapped($event, car)"
+      />
     </ul>
   </div>
+
+  {{ cars }}
 </template>
