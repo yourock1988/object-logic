@@ -1,14 +1,29 @@
 <script>
+const makeId = () => ((Math.random() * 0xffffffff) >>> 0).toString(16)
+
+const initCar = () => ({
+  id: makeId(),
+  brand: '',
+  price: 0,
+  isTurbo: true,
+})
+
 export default {
-  emits: ['car-created'],
+  emits: ['car-submit'],
 
   data() {
     return {
-      car: {
-        brand: 'Mercedes',
-        price: 33000,
-      },
+      car: initCar(),
     }
+  },
+
+  methods: {
+    submitCar() {
+      if (this.car.brand && this.car.price) {
+        this.$emit('car-submit', this.car)
+        this.car = initCar()
+      }
+    },
   },
 }
 </script>
@@ -17,9 +32,7 @@ export default {
   <div class="wrap">
     <h2>Добавление новой машинки</h2>
     <input v-model="car.brand" />
-    <input v-model="car.price" />
-    <button @click="$emit('car-created', Object.assign({}, car))">
-      Submit
-    </button>
+    <input v-model.number="car.price" />
+    <button @click="submitCar">Submit</button>
   </div>
 </template>

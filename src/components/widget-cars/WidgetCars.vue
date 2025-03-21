@@ -7,17 +7,13 @@ export default {
 
   data() {
     return {
-      cars: [
-        {
-          brand: 'BMW',
-          price: 33000,
-        },
-      ],
+      cars: [],
     }
   },
 
   methods: {
     carsWithSwapped(newCar, oldCar) {
+      console.log(newCar)
       return this.cars.map(n => (n === oldCar ? newCar : n))
     },
   },
@@ -26,7 +22,7 @@ export default {
 
 <template>
   <div class="wrap">
-    <CarSubmitter @car-created="cars.push($event)" />
+    <CarSubmitter @car-submit="cars.push($event)" />
 
     <ul>
       <CarEditor
