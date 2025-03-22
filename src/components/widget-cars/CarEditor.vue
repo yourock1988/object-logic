@@ -11,11 +11,8 @@ export default {
   },
 
   watch: {
-    localCar: {
-      deep: true,
-      handler(newValue) {
-        console.log('compare CAR:', this.localCar === this.car)
-      },
+    car(newValue) {
+      this.localCar = Object.assign({}, newValue)
     },
   },
 }
@@ -23,6 +20,7 @@ export default {
 
 <template>
   <li>
+    <b>{{ car.brand }}</b>
     <input v-model="localCar.brand" />
     <input v-model="localCar.price" />
     <input v-model="localCar.isTurbo" />
@@ -30,23 +28,5 @@ export default {
     <button @click="$emit('car-edit', Object.assign({}, this.localCar))">
       EDIT
     </button>
-
-    <!-- <input
-      :value="car.brand"
-      @input="
-        $emit(
-          'car-edit',
-          Object.assign({}, car, { brand: $event.target.value })
-        )
-      "
-    />
-    <input
-      :value="car.price"
-      @input="$emit('car-edit', Object.assign({}, car))"
-    />
-    <input
-      :value="car.isTurbo"
-      @input="$emit('car-edit', Object.assign({}, car))"
-    /> -->
   </li>
 </template>

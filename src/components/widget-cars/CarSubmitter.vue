@@ -13,15 +13,15 @@ export default {
 
   data() {
     return {
-      car: initCar(),
+      localCar: initCar(),
     }
   },
 
   methods: {
     submitCar() {
-      if (this.car.brand && this.car.price) {
-        this.$emit('car-submit', this.car)
-        this.car = initCar()
+      if (this.localCar.brand && this.localCar.price) {
+        this.$emit('car-submit', this.localCar)
+        this.localCar = initCar()
       }
     },
   },
@@ -31,8 +31,8 @@ export default {
 <template>
   <div class="wrap">
     <h2>Добавление новой машинки</h2>
-    <input v-model="car.brand" />
-    <input v-model.number="car.price" />
+    <input v-model="localCar.brand" />
+    <input v-model.number="localCar.price" />
     <button @click="submitCar">Submit</button>
   </div>
 </template>
