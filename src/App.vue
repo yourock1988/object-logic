@@ -14,14 +14,17 @@ export default {
 </script>
 
 <template>
-  <CarEditor :car="car" />
-  <div class="wrap">
-    <div>
-      <h1>Hello Vue {{ car }}</h1>
+  <div>
+    <div class="wrap">
+      <div>
+        <h1>Hello Vue {{ car }}</h1>
+      </div>
+      <div>
+        <WidgetCars />
+      </div>
     </div>
-    <div>
-      <WidgetCars />
-    </div>
+
+    <CarEditor :car="car" />
   </div>
 </template>
 

@@ -58,6 +58,4 @@ export default {
       />
     </ul>
   </div>
-
-  {{ cars }}
 </template>
