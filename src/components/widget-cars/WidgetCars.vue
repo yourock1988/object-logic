@@ -1,20 +1,14 @@
 <script>
-import CarEditor from './CarEditor.vue'
 import CarSubmitter from './CarSubmitter.vue'
+import CarsList from './CarsList.vue'
 
 export default {
-  components: { CarSubmitter, CarEditor },
+  components: { CarSubmitter, CarsList },
 
   data() {
     return {
       cars: [],
     }
-  },
-
-  methods: {
-    carsWithSwapped(newCar, oldCar) {
-      return this.cars.map(n => (n === oldCar ? newCar : n))
-    },
   },
 }
 </script>
@@ -23,39 +17,8 @@ export default {
   <div class="wrap">
     <CarSubmitter @car-submit="cars.push($event)" />
 
-    <ul>
-      <CarEditor
-        v-for="(car, idx) of cars"
-        :key="idx"
-        :car="car"
-        @car-edit="cars = carsWithSwapped($event, car)"
-      />
-    </ul>
+    <CarsList v-model="cars" />
 
-    <br />
-    <hr />
-    <br />
-
-    <ul>
-      <CarEditor
-        v-for="(car, idx) of cars"
-        :key="idx"
-        :car="car"
-        @car-edit="cars = carsWithSwapped($event, car)"
-      />
-    </ul>
-
-    <br />
-    <hr />
-    <br />
-
-    <ul>
-      <CarEditor
-        v-for="(car, idx) of cars"
-        :key="idx"
-        :car="car"
-        @car-edit="cars = carsWithSwapped($event, car)"
-      />
-    </ul>
+    <!-- <CarsList :model-value="cars" @update:model-value="cars = $event" /> -->
   </div>
 </template>
